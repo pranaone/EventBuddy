@@ -5,7 +5,7 @@ import java.time.LocalTime;
 
 
 
-public class Event {
+public class Event  {
 
 	private int eventId;
 	private String eventName;
@@ -62,6 +62,19 @@ public class Event {
 		this.ticketPrice = ticketPrice;
 		this.eventImage = eventImage;
 		this.hall = hall;
+	}
+
+	public Event(int eventId, String eventName, String eventType, String eventDescription, LocalDate eventDate,
+			LocalTime startTime, LocalTime endTime, double ticketPrice) {
+		super();
+		this.eventId = eventId;
+		this.eventName = eventName;
+		this.eventType = eventType;
+		this.eventDescription = eventDescription;
+		this.eventDate = eventDate;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.ticketPrice = ticketPrice;
 	}
 
 	public int getEventId() {

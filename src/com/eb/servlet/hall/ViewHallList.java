@@ -20,18 +20,27 @@ public class ViewHallList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		int ownerID = Integer.parseInt(request.getParameter("ownerID"));
-		HallDAO dao = new HallDAO();
-		List<Hall> list = dao.getHallListByOwner(ownerID);
-		if (list != null) {
-			request.setAttribute("hallList", list);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewHallList.jsp");
-			dispatcher.forward(request, response);
+		if(request.getParameter("ownerID")!=null)
+		{
+			int ownerID = Integer.parseInt(request.getParameter("ownerID"));
+			HallDAO dao = new HallDAO();
+			List<Hall> list = dao.getHallListByOwner(ownerID);
+			if (list != null) {
+				request.setAttribute("hallList", list);
+				request.setAttribute("hallCount", list.size());
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ViewHallList.jsp");
+				dispatcher.forward(request, response);
+			}
+			else 
+			{
+				response.sendRedirect(request.getContextPath() + "/ErrorPage.jsp");
+			}
 		}
 		else 
 		{
-			response.sendRedirect(request.getContextPath() + "/ErrorPage.jsp");
+			response.sendRedirect(request.getContextPath() + "/Login.jsp");
 		}	
+			
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,58 +1,70 @@
 package com.eb.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Ticket {
 
-private int ticket_id;
-private String seat_no;
+private int ticketId;
+private String seatNno;
 private double commission;
-private Date payment_date;
-private double payment_amount;
-private String payment_status;
+private LocalDate paymentDate;
+private double paymentAmount;
+private String paymentStatus;
 private Customer customer;
 private Event event;
 
 public Ticket() {}
 
-public Ticket(int ticket_id, String seat_no, double commission, Date payment_date, double payment_amount,
-		String payment_status) {
+public Ticket(String seatNno, double commission, LocalDate paymentDate, double paymentAmount, String paymentStatus,
+		Customer customer, Event event) {
 	super();
-	this.ticket_id = ticket_id;
-	this.seat_no = seat_no;
+	this.seatNno = seatNno;
 	this.commission = commission;
-	this.payment_date = payment_date;
-	this.payment_amount = payment_amount;
-	this.payment_status = payment_status;
-}
-
-public Ticket(int ticket_id, String seat_no, double commission, Date payment_date, double payment_amount,
-		String payment_status, Customer customer, Event event) {
-	super();
-	this.ticket_id = ticket_id;
-	this.seat_no = seat_no;
-	this.commission = commission;
-	this.payment_date = payment_date;
-	this.payment_amount = payment_amount;
-	this.payment_status = payment_status;
+	this.paymentDate = paymentDate;
+	this.paymentAmount = paymentAmount;
+	this.paymentStatus = paymentStatus;
 	this.customer = customer;
 	this.event = event;
 }
 
-public int getTicket_id() {
-	return ticket_id;
+public Ticket(int ticketId, String seatNno, double commission, LocalDate paymentDate, double paymentAmount,
+		String paymentStatus) {
+	super();
+	this.ticketId = ticketId;
+	this.seatNno = seatNno;
+	this.commission = commission;
+	this.paymentDate = paymentDate;
+	this.paymentAmount = paymentAmount;
+	this.paymentStatus = paymentStatus;
 }
 
-public void setTicket_id(int ticket_id) {
-	this.ticket_id = ticket_id;
+public Ticket(int ticketId, String seatNno, double commission, LocalDate paymentDate, double paymentAmount,
+		String paymentStatus, Customer customer, Event event) {
+	super();
+	this.ticketId = ticketId;
+	this.seatNno = seatNno;
+	this.commission = commission;
+	this.paymentDate = paymentDate;
+	this.paymentAmount = paymentAmount;
+	this.paymentStatus = paymentStatus;
+	this.customer = customer;
+	this.event = event;
 }
 
-public String getSeat_no() {
-	return seat_no;
+public int getTicketId() {
+	return ticketId;
 }
 
-public void setSeat_no(String seat_no) {
-	this.seat_no = seat_no;
+public void setTicketId(int ticketId) {
+	this.ticketId = ticketId;
+}
+
+public String getSeatNno() {
+	return seatNno;
+}
+
+public void setSeatNno(String seatNno) {
+	this.seatNno = seatNno;
 }
 
 public double getCommission() {
@@ -63,28 +75,28 @@ public void setCommission(double commission) {
 	this.commission = commission;
 }
 
-public Date getPayment_date() {
-	return payment_date;
+public LocalDate getPaymentDate() {
+	return paymentDate;
 }
 
-public void setPayment_date(Date payment_date) {
-	this.payment_date = payment_date;
+public void setPaymentDate(LocalDate paymentDate) {
+	this.paymentDate = paymentDate;
 }
 
-public double getPayment_amount() {
-	return payment_amount;
+public double getPaymentAmount() {
+	return paymentAmount;
 }
 
-public void setPayment_amount(double payment_amount) {
-	this.payment_amount = payment_amount;
+public void setPaymentAmount(double paymentAmount) {
+	this.paymentAmount = paymentAmount;
 }
 
-public String getPayment_status() {
-	return payment_status;
+public String getPaymentStatus() {
+	return paymentStatus;
 }
 
-public void setPayment_status(String payment_status) {
-	this.payment_status = payment_status;
+public void setPaymentStatus(String paymentStatus) {
+	this.paymentStatus = paymentStatus;
 }
 
 public Customer getCustomer() {
@@ -103,4 +115,8 @@ public void setEvent(Event event) {
 	this.event = event;
 }
 
+
+
+
 }
+

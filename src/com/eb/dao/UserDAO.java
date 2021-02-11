@@ -41,6 +41,39 @@ public class UserDAO {
 		return user;
 
 	}
+	
+	public User getUserById(int id) {
+
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			con = DBConnection.getConnection();
+			stmt = con.prepareStatement("select * from users where user_id=?");
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+			}
+			return user;
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (rs != null)
+					rs.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return user;
+
+	}
 
 	public boolean registerUser(User u) {
 
@@ -58,6 +91,33 @@ public class UserDAO {
 			int n = stmt.executeUpdate();
 			return n > 0 ? true : false;
 			
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			try {
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}
+		return false;
+
+	}
+	
+	
+	public boolean deleteUser(int id) {
+
+		Connection con = null;
+		PreparedStatement stmt = null;
+		try {
+			con = DBConnection.getConnection();
+			stmt = con.prepareStatement("delete from users where user_id=?");
+			stmt.setInt(1, id);
+			int n = stmt.executeUpdate();
+			return n > 0 ? true : false;
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {

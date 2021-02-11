@@ -1,12 +1,14 @@
 create table users(
 user_id number(10) primary key,
 user_name varchar2(25) not null,
-password varchar2(50) not null,
+password varchar2(255) not null,
 user_type varchar2(15) not null);
 
 Create sequence users_sequence
 start with 100
 increment by 1;
+
+insert into users (users_sequence.nextval,'admin','$2a$10$XTw8V9NDc4AdVxc/sS.SzejKV/Kov0RK/wr/N/kDRI2dBmHmI2TaK','admin');
 
 create table customers(
 customer_id number(10) primary key,
@@ -54,12 +56,12 @@ create table events(
 event_id number(10) primary key,
 event_name varchar2(25) not null,
 event_type varchar2(25) not null,
-event_description varchar2(100) not null,
+event_description varchar2(250) not null,
 event_date date not null,
 start_time timestamp not null,
 end_time timestamp not null,
 ticket_price binary_double not null,
-event_image varchar2(255) not null,
+event_image varchar2(500),
 hall_id number(10) not null,
 constraint fk_events foreign key(hall_id) references halls(hall_id) on delete cascade);
 

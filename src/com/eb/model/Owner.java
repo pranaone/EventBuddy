@@ -8,6 +8,7 @@ public class Owner {
 	private String mobile;
 	private String brNo;
 	private User user;
+	private int userId;
 	
 	public Owner() {}
 	
@@ -30,6 +31,29 @@ public class Owner {
 		this.mobile = mobile;
 		this.brNo = brNo;
 		this.user = user;
+	}
+	
+	public Owner(String firstName, String lastName, String email, String mobile, String brNo, User user) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.brNo = brNo;
+		this.user = user;
+	}
+	
+	
+
+	public Owner(int ownerId, String firstName, String lastName, String email, String mobile, String brNo, int userId) {
+		super();
+		this.ownerId = ownerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.brNo = brNo;
+		this.userId = userId;
 	}
 
 	public int getOwnerId() {
@@ -87,11 +111,13 @@ public class Owner {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
 
-	
+	public int getUserId() {
+		return userId;
+	}
 
-	
-
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	
 }

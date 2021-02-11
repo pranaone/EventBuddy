@@ -4,10 +4,14 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class Encryption {
 	
+	//static final String salt = BCrypt.gensalt();
+	
 	public String createPassword(String password) {
 		
 		String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
+		System.out.println(hashedPassword);
 		return hashedPassword;
+		//BCrypt.checkpw(plaintext, hashed)
 		
 	}
 	
@@ -15,9 +19,13 @@ public class Encryption {
 		
 		boolean isValid = false;
 		
-		if (BCrypt.hashpw(inputPassword, BCrypt.gensalt(10)).equals(dbPassword)) {
+//		String hashedInput = BCrypt.hashpw(inputPassword,  BCrypt.gensalt(10));
+		
+		if (BCrypt.checkpw(inputPassword, dbPassword)) 
+		{
 			isValid = true;
 		}
+		
 		
 		return isValid;
 	}

@@ -4,24 +4,57 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <title>Update Hall</title>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Event Buddy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="OwnerHome.jsp">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="ViewHallList?ownerID=<%=session.getAttribute("ownerID")%>" >Manage Halls</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="OwnerReport?ownerID=<%=session.getAttribute("ownerID")%>">View Report</a>
+      </li>
+    </ul>   
+    <form class="form-inline my-2 my-lg-0" action="LogoutUser" method="get">
+    <strong style="color:white" > <%=session.getAttribute("ownerName")%> </strong> &nbsp; &nbsp;
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+	</form>
+  </div>
+</nav>
+<center>
+<hr>
 <h2>Update Hall</h2>
+<hr>
+<br>
 <form action="UpdateHall" method="post">
 <pre>
-Hall Name: 	<input type="text" name="hallName" value="${hall.hallName}" required/> <br><br>
-Hall Type: 	<input type="text" name="hallType" value="${hall.hallType}" required/> <br><br>
-Hall Location: 	<input type="text" name="hallLocation" value="${hall.hallLocation}" required/> <br><br>
-Hall Contact: 	<input type="text" name="hallContact" value="${hall.hallContact}" required/> <br><br>
-No of Seats: 	<input type="number" name="noOfSeats" value="${hall.noOfSeats}" required/> <br><br>
-				<input type="hidden" name="ownerID" value="<%=session.getAttribute("ownerID")%>"/>
-				<input type="hidden" name="hallID" value="${hall.hallId}"/> 
-		<input type="submit" value="Update"/> 
-
+Hall Name: 	<input type="text" name="hallName" value="${hall.hallName}" maxlength="25" required/> <br>
+Hall Type: 	<input type="text" name="hallType" value="${hall.hallType}" maxlength="25" required/> <br>
+Hall Location: 	<input type="text" name="hallLocation" value="${hall.hallLocation}" maxlength="50" required/> <br>
+Hall Contact: 	<input type="text" name="hallContact" value="${hall.hallContact}" maxlength="10" required/> <br>
+No of Seats: 	<input type="number" name="noOfSeats" value="${hall.noOfSeats}" required/> <br>
+<input type="hidden" name="ownerID" value="<%=session.getAttribute("ownerID")%>"/> <input type="hidden" name="hallID" value="${hall.hallId}"/> 
 </pre>
+<hr>
+<input type="submit" value="Update" class="btn btn-success"/> &nbsp; <input type="reset" value="Clear" class="btn btn-warning" /> &nbsp; <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+<hr>
 </form>
 
-<a href="javascript:history.back()">Go Back</a>
+</center>
+
 </body>
 </html>

@@ -33,6 +33,18 @@ public class Customer {
 		this.nicNo = nicNo;
 		this.user = user;
 	}
+	
+	
+
+	public Customer(String firstName, String lastName, String email, String mobile, String nicNo, User user) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.mobile = mobile;
+		this.nicNo = nicNo;
+		this.user = user;
+	}
 
 	public int getCustomerId() {
 		return customerId;
@@ -89,9 +101,5 @@ public class Customer {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
-
-
 	
 }
